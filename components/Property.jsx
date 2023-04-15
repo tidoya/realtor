@@ -1,9 +1,9 @@
-import { Flex, Box, Text, Button, Avatar } from '@chakra-ui/react';
+import { Flex, Box, Text, Avatar } from '@chakra-ui/react';
 import Image from 'next/image';
 import Link from 'next/link';
 import defaultImage from '../assets/house.png';
 import { GoVerified } from 'react-icons/go';
-import { FaBed, FaBath } from 'react-icons/fa';
+import { FaBath } from 'react-icons/fa';
 import { BsGridFill } from 'react-icons/bs';
 import millify from 'millify';
 
@@ -38,7 +38,7 @@ function Property({
             height={260}
           />
         </Box>
-        <Box>
+        <Box w="full">
           <Flex paddingTop="2" alignItems="center" justifyContent="flex-start">
             <Flex alignItems="center">
               <Box paddingRight="3" color="green.400">

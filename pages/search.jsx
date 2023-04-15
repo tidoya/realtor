@@ -4,16 +4,14 @@ import Image from 'next/image';
 import { Flex, Box, Text, Icon } from '@chakra-ui/react';
 import { BsFilter } from 'react-icons/bs';
 
-// import Property from '../components/Property';
-// import SearchFilters from '../components/SearchFilters';
-// import { baseUrl, fetchApi } from '../utils/fetchApi';
-// import noresult from '../assets/images/noresult.svg';
+import noresult from '../assets/NoResult.svg';
 
 import React from 'react';
 import SearchFilters from '@/components/SearchFilters';
 import Property from '@/components/Property';
+import { baseUrl, fetchApi } from '@/utils/fetchApi';
 
-const Search = () => {
+const Search = ({ properties }) => {
   const [searchFilters, setSearchFilters] = useState(false);
   const router = useRouter();
   return (
@@ -36,7 +34,7 @@ const Search = () => {
       <Text fontSize="2x1" p="4" fontWeight="bold">
         Properties {router.query.purpose}
       </Text>
-      <Flex>
+      <Flex flexWrap="wrap" justifyContent="space-around">
         {properties.map((property) => (
           <Property key={property.id} property={property} />
         ))}
@@ -58,4 +56,26 @@ const Search = () => {
   );
 };
 
+export async function getServerSideProps({ query }) {
+  const purpose = query.purpose || 'for-rent';
+  const rentFrequency = query.rentFrequency || 'yearly';
+  const minPrice = query.minPrice || '0';
+  const maxPrice = query.maxPrice || '1000000';
+  const roomsMin = query.roomsMin || '0';
+  const bathsMin = query.bathsMin || '0';
+  const sort = query.sort || 'price-desc';
+  const areaMax = query.areaMax || '35000';
+  const locationExternalIDs = query.locationExternalIDs || '5002';
+  const categoryExternalID = query.categoryExternalID || '4';
+
+  const data = await fetchApi(
+    `${baseUrl}/properties/list?locationExternalIDs=${locationExternalIDs}&purpose=${purpose}&categoryExternalID=${categoryExternalID}&bathsMin=${bathsMin}&rentFrequency=${rentFrequency}&priceMin=${minPrice}&priceMax=${maxPrice}&roomsMin=${roomsMin}&sort=${sort}&areaMax=${areaMax}`,
+  );
+
+  return {
+    props: {
+      properties: data?.hits,
+    },
+  };
+}
 export default Search;

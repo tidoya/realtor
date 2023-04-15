@@ -3,7 +3,6 @@ import MyBanner from '../components/MyBanner';
 import { baseUrl, fetchApi } from '@/utils/fetchApi';
 import Property from '@/components/Property';
 function Home({ propertiesForSale, propertiesForRent }) {
-  console.log(propertiesForRent);
   return (
     <Box>
       <MyBanner
