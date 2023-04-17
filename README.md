@@ -15,7 +15,5 @@ Open [http://localhost:3000](http://localhost:3000) with your browser to see the
 ## Tools:
 
 -NextJS 
-#
--Chakra U I
-#
+-Chakra UI
 -Server API: 'https://rapidapi.com/apidojo/api/bayut
