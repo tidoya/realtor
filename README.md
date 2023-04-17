@@ -12,4 +12,8 @@ pnpm dev
 
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
+## Tools:
 
+-NextJS
+-Chakra UI
+-Server API: 'https://rapidapi.com/apidojo/api/bayut
