@@ -6,6 +6,7 @@ import { GoVerified } from 'react-icons/go';
 import { FaBath } from 'react-icons/fa';
 import { BsGridFill } from 'react-icons/bs';
 import millify from 'millify';
+import FooterInProperty from './FooterInProperty/FooterInProperty';
 
 function Property({
   property: {
@@ -21,8 +22,9 @@ function Property({
     externalID,
   },
 }) {
+  const fullTitle = false;
   return (
-    <Link href={`/proprty/${externalID}`} passHref>
+    <Link href={`/property/${externalID}`} passHref>
       <Flex
         flexWrap="wrap"
         w="420px"
@@ -39,24 +41,19 @@ function Property({
           />
         </Box>
         <Box w="full">
-          <Flex paddingTop="2" alignItems="center" justifyContent="flex-start">
-            <Flex alignItems="center">
-              <Box paddingRight="3" color="green.400">
-                {isVerified && <GoVerified />}
-              </Box>
-              <Text fontWeight="bold" fontSize="lg">
-                AED {millify(price)}
-                {rentFrequency && `/${rentFrequency}`}
-              </Text>
-            </Flex>
-            <Box>
-              <Avatar marginLeft={3} size="sm" src={agency?.logo?.url} />
-            </Box>
-          </Flex>
-          <Flex alignItems="center" p="1" justifyContent="space-between" w="250px" color="blue.400">
-            {rooms} <FaBath /> | {baths} <FaBath /> | {millify(area)} sqft <BsGridFill />
-          </Flex>
-          <Text fontSize="lg">{title.length > 30 ? `${title.substring(0, 30)}...` : title}</Text>
+          <FooterInProperty
+            property={{
+              price,
+              rentFrequency,
+              rooms,
+              title,
+              baths,
+              area,
+              agency,
+              isVerified,
+              fullTitle,
+            }}
+          />
         </Box>
       </Flex>
     </Link>
