@@ -17,3 +17,7 @@ Open [http://localhost:3000](http://localhost:3000) with your browser to see the
 -NextJS <br>
 -Chakra UI<br>
 -Server API: 'https://rapidapi.com/apidojo/api/bayut<br>
+
+
+## Project
+You can view the completed project by following this link: https://realtor-steel-kappa.vercel.app/
